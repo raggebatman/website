@@ -1,3 +1,3 @@
-# ragge.xyz
+# website
 
-This is my website that I host with the help of Vercel :)
+These websites are served with Vercel.

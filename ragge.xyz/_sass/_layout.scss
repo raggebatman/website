@@ -1,0 +1,40 @@
+html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    width: 640px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+}
+
+#bios > header {
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bios > main {
+    flex: 1 0 auto;
+}
+
+#bios > footer {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+
+    > :first-child {
+        margin-top: 4px;
+    }
+}
+
+#bsod > main {
+    margin: 10px;
+}
