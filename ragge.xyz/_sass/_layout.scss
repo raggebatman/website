@@ -12,29 +12,77 @@ body {
     flex-direction: column;
 }
 
-#bios > header {
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+#bios {
+    > header {
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-#bios > main {
-    flex: 1 0 auto;
-}
+    > nav {
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+    
+        > ul {
+            display: flex;
+            padding-left: 3em;
+    
+            > li > a,
+            > a 
+            {
+                padding: 0 0.5em;
+            }
+        }
+    
+        .nav-list {
+            display: block;
+            position: absolute;
+    
+            &.open {
+                display: block;
+            }
+        }
+    
+        a:hover {
+            cursor: pointer;
+        }
+    }
 
-#bios > footer {
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-shrink: 0;
+    > main {
+        flex: 1 0 auto;
+    }
 
-    > :first-child {
-        margin-top: 4px;
+    > footer {
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        flex-shrink: 0;
+
+        > :first-child {
+            margin-top: 4px;
+        }
     }
 }
 
-#bsod > main {
-    margin: 10px;
+#bsod {
+    > main {
+        margin: 10px;
+    }
+}
+
+#bootup {
+    > main {
+        flex: 1 0 auto;
+    }
+
+    > footer {
+        height: 16px;
+        text-align: left;
+    }
 }

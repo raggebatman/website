@@ -1,6 +1,4 @@
 ---
-layout: standard
-title: index
+layout: bootup
+robots: noindex, follow
 ---
-
-still under construction!

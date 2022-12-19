@@ -1,0 +1,41 @@
+<nav>
+    {% comment %}
+        I've adapted this from Stack Overflow:
+        https://stackoverflow.com/questions/8340170/jekyll-automatically-highlight-current-tab-in-menu-bar
+    {% endcomment %}
+
+    <ul>
+    {% for _page in site.data.navigation.links %}
+        {% capture path %}{{ _page.url }}.html{% endcapture %}
+        {% if page.url == path %}
+            <a class="nav-item selected" href="{{ _page.url }}">
+                <li>{{ _page.title }}</li>
+            </a>
+        {% else %}
+            <a class="nav-item" href="{{ _page.url }}">
+                <li>{{ _page.title }}</li>
+            </a>
+        {% endif %}
+    {% endfor %}
+    {% for _group in site.data.navigation.grouped %}
+        <li id="{{ _group.id }}" class="nav-list">
+            <a class="nav-item" onclick="navbar_dropdown_toggle('{{ _group.id }}');">{{ _group.title }}</a>
+            <ul class="nav-list">
+                {% for _page in _group.links %}
+                    {% capture path %}{{ _group.url }}{{ _page.url }}.html{% endcapture %}
+                    {% capture url %}{{ _group.url }}{{ _page.url }}{% endcapture %}
+                    {% if page.url == path %}
+                        <a class="nav-list-item selected" href="{{ url }}">
+                            <li>{{ _page.title }}</li>
+                        </a>
+                    {% else %}
+                        <a class="nav-list-item" href="{{ url }}">
+                            <li>{{ _page.title }}</li>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+</nav>
