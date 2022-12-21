@@ -1,0 +1,78 @@
+:root {
+    --light: hsl(339, 0%, 95%);
+    --dark: hsl(339, 0%, 5%);
+    --accent: hsl(339, 100%, 70%);
+    --accent-darker: hsl(339, 50%, 50%);
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: black;
+    }
+
+    body {
+        background-color: var(--dark);
+        color: var(--light);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    html {
+        background-color: white;
+    }
+
+    body {
+        background-color: var(--light);
+        color: var(--dark);
+    }
+}
+
+@counter-style asterisks {
+    system: cyclic;
+    symbols: "*";
+    suffix: " ";
+}
+
+::selection {
+    background-color: var(--accent-darker);
+    color: var(--light);
+}
+
+body {
+    width: 800px;
+    max-width: calc(100% - 16px * 4);
+    margin: 16px auto 16px auto;
+    padding: 16px;
+    outline: 1px solid var(--accent);
+    line-height: 1.5em;
+    font-family: monospace;
+    font-size: 1.25em;
+}
+
+body > *
+{
+    margin: 1.25em 0 0 0;
+}
+
+ul {
+    list-style: asterisks;
+}
+
+ul, ol
+{
+    padding-left: 1em;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--accent-darker);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
