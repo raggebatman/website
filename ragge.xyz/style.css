@@ -1,11 +1,13 @@
 :root {
     --light: hsl(339, 0%, 95%);
     --dark: hsl(339, 0%, 5%);
-    --accent: hsl(339, 100%, 70%);
-    --accent-darker: hsl(339, 50%, 50%);
 }
 
 @media (prefers-color-scheme: dark) {
+    :root {
+        --accent: hsl(339, 100%, 70%);
+    }
+
     html {
         background-color: black;
     }
@@ -17,12 +19,16 @@
 }
 
 @media (prefers-color-scheme: light) {
+    :root {
+        --accent: hsl(339, 50%, 50%);
+    }
+
     html {
-        background-color: white;
+        background-color: var(--light);
     }
 
     body {
-        background-color: var(--light);
+        background-color: white;
         color: var(--dark);
     }
 }
@@ -34,7 +40,7 @@
 }
 
 ::selection {
-    background-color: var(--accent-darker);
+    background-color: var(--accent);
     color: var(--light);
 }
 
@@ -58,18 +64,16 @@ ul {
     list-style: asterisks;
 }
 
-ul, ol
+ul, 
+ol
 {
     padding-left: 1em;
 }
 
-a {
+a,
+a:visited
+{
     color: var(--accent);
-    text-decoration: none;
-}
-
-a:visited {
-    color: var(--accent-darker);
     text-decoration: none;
 }
 
