@@ -1,36 +1,44 @@
-:root {
-    --light: hsl(339, 0%, 95%);
-    --dark: hsl(339, 0%, 5%);
-}
-
 @media (prefers-color-scheme: dark) {
     :root {
-        --accent: hsl(339, 100%, 70%);
+        --bg: hsl(339, 0%, 5%);
+        --fg: hsl(339, 0%, 100%);
+        --ac: hsl(339, 100%, 70%);
     }
 
     html {
         background-color: black;
     }
-
-    body {
-        background-color: var(--dark);
-        color: var(--light);
-    }
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        --accent: hsl(339, 50%, 50%);
+        --bg: hsl(339, 0%, 95%);
+        --fg: hsl(339, 0%, 5%);
+        --ac: hsl(339, 50%, 50%);
     }
 
     html {
-        background-color: var(--light);
-    }
-
-    body {
         background-color: white;
-        color: var(--dark);
     }
+}
+
+:root {
+    --body-width: 800px;
+    --body-margins: 16px;
+    --font-size: 1.25em;
+    --line-height: 1.5em;
+    --item-margin: 1.25em;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    outline: 1px solid var(--ac);
+}
+
+::selection {
+    background-color: var(--ac);
+    color: var(--bg);
 }
 
 @counter-style asterisks {
@@ -39,44 +47,38 @@
     suffix: " ";
 }
 
-::selection {
-    background-color: var(--accent);
-    color: var(--light);
-}
-
 body {
-    width: 800px;
-    max-width: calc(100% - 16px * 4);
-    margin: 16px auto 16px auto;
-    padding: 16px;
-    outline: 1px solid var(--accent);
-    line-height: 1.5em;
+    width: var(--body-width);
+    max-width: calc(100% - var(--body-margins) * 4);
+    margin: var(--body-margins) auto var(--body-margins) auto;
+    padding: var(--body-margins);
+    line-height: var(--line-height);
     font-family: monospace;
-    font-size: 1.25em;
+    font-size: var(--font-size);
 }
 
-body > *
+body *
 {
-    margin: 1.25em 0 0 0;
+    margin: var(--item-margin) 0 calc(var(--item-margin) / 2) 0;
 }
 
 ul {
     list-style: asterisks;
 }
 
-ul, 
-ol
-{
+ul, ol {
     padding-left: 1em;
 }
 
-a,
-a:visited
-{
-    color: var(--accent);
+a, a:visited {
+    color: var(--ac);
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+p {
+    text-indent: 2em;
 }
