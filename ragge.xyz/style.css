@@ -12,13 +12,13 @@
 
 @media (prefers-color-scheme: light) {
     :root {
-        --bg: hsl(339, 0%, 95%);
+        --bg: white;
         --fg: hsl(339, 0%, 5%);
         --ac: hsl(339, 50%, 50%);
     }
 
     html {
-        background-color: white;
+        background-color: hsl(339, 0%, 95%);
     }
 }
 
@@ -80,5 +80,5 @@ a:hover {
 }
 
 p {
-    text-indent: 2em;
+    text-indent: 1em;
 }
