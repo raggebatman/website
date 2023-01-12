@@ -1,0 +1,15 @@
+#toc {
+    counter-reset: toc;
+
+    ol {
+        counter-reset: toc;
+    }
+
+    li {
+        counter-increment: toc;
+
+        &::marker {
+            content: counters(toc, '.', decimal) ' ';
+        }
+    }
+}

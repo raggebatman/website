@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="/style.css" />
+        <title><%= @item.fetch(:book) %> - <%= @item.fetch(:chapter) %> (<%= @config.fetch(:site)[:title] %>)</title>
+        <meta name="description" content="<%= @item.fetch(:description, @config.fetch(:site)[:description]) %>" />
+        <meta name="author" content="<%= @item.fetch(:author, @config.fetch(:site)[:author]) %>" />
+        <% if @item.key?(:keywords) %><meta name="keywords" content="<%= @item.fetch(:keywords) %>" /><% end %>
+        <meta name="license" content="https://creativecommons.org/licenses/by-sa/4.0/" />
+        <meta name="generator" content="Nanoc <%= Nanoc::VERSION %>" />
+        <meta name="color-scheme" content="light dark" />
+        <meta name="robots" content="index, follow" />
+
+        <!-- <%= @config.fetch(:site)[:source] %> -->
+    </head>
+    <body>
+        <header>
+            <h1><%= @config.fetch(:site)[:title] %></h1>
+            <% if @item.key?(:title) %><h3><%= @item.fetch(:title) %></h3><% end %>
+            <nav></nav>
+        </header>
+        <aside>
+            <div>{{TOC}}</div>
+        </aside>
+        <main>
+            <%= yield %>
+        </main>
+        <footer>
+            <div>
+                <span>View this on</span> <a id="repository" href="<%= @config.fetch(:site)[:source] %>">GitHub</a>
+            </div>
+            <div>
+                <span>Last modified</span> <time id="timestamp"><%= File.stat(@item.raw_filename).mtime %></time>
+            </div>
+        </footer>
+    </body>
+</html>

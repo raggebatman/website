@@ -1,0 +1,7 @@
+{
+    "installCommand": "bundle install",
+    "buildCommand": "bundle exec nanoc",
+    "outputDirectory": "output",
+    "cleanUrls": true,
+    "trailingSlash": false
+}
