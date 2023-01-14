@@ -31,7 +31,7 @@ class TableOfContentsGenerator < Nanoc::Filter
             headings.each do | heading |
                 i = headings.index(heading)
 
-                # these hold will hold the number in the heading
+                # these vars will hold the number in the heading
                 # i.e. if the current {heading} contains '<h2>...' then {cur == 2}
                 # so remember; the higher the number, the smaller the heading
                 cur = get_size(heading)
@@ -78,10 +78,15 @@ class TableOfContentsGenerator < Nanoc::Filter
                         # (i.e. going from h4 to h2 or the like)
                         toc += "<li>#{link}</li>" + ('</ol></li>' * (cur - nxt))
                     end
-                elsif cur > 1
-                    # this is our final item, make sure to close off any sections
-                    # in case this isn't a h1
-                    toc += "<li>#{link}</li>" + ('</ol></li>' * (cur - 1))
+                else
+                    # this is our final item
+                    toc += "<li>#{link}</li>"
+                    
+                    if cur > 1
+                        # make sure to close off any sections
+                        # in case this isn't a h1
+                        toc += '</ol></li>' * (cur - 1)
+                    end
                 end
             end
 
