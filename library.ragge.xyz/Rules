@@ -22,6 +22,7 @@ compile '/**/*.erb' do
 end
 
 compile '/books/**/*.md' do
+    write item.identifier.to_s
     filter :kramdown
     layout '/book.erb'
     filter :add_toc

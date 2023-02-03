@@ -1,0 +1,89 @@
+@media (prefers-color-scheme: light) {
+    :root {
+        --background: hsl(339, 0%, 95%);
+        --foreground: hsl(339, 0%, 5%);
+        --accent: hsl(339, 50%, 50%);
+        --background-secondary: white;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: hsl(339, 0%, 5%);
+        --foreground: hsl(339, 0%, 100%);
+        --accent: hsl(339, 100%, 70%);
+        --background-secondary: black;
+    }
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+code {
+    color: var(--accent);
+    background-color: var(--background-secondary);
+}
+
+details[open] summary {
+    font-weight: bold;
+}
+
+summary:hover {
+    color: var(--accent);
+    cursor: pointer;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: var(--accent);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+pre {
+    padding: 1em;
+    border: 1px solid;
+    overflow-x: scroll;
+    border-color: var(--accent);
+    color: var(--accent);
+    background-color: var(--background-secondary);
+}
+
+header h1 {
+    font-size: 2.25em;
+}
+
+main {
+    h1 {
+        font-size: 1.75em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        font-size: 1.25em;
+    }
+
+    h4 {
+        font-size: 1em;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+}
+
+::-webkit-scrollbar-corner, ::-webkit-scrollbar-track {
+    background-color: var(--background-secondary);
+}

@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Crimson Pro';
+    src: 
+        url('/static/CrimsonPro-Regular.woff2') format('woff2'),
+        url('/static/CrimsonPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: 
+        url('/static/Inconsolata-Regular.woff2') format('woff2'),
+        url('/static/Inconsolata-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Crimson Pro', serif;
+    font-size: 120%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+code {
+    font-family: 'Inconsolata', monospace;
+}

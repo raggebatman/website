@@ -1,3 +1,37 @@
-<h1>Under construction!</h1>
+<p>
+    Here's a collection of information I want to share!
+    I've grouped each page under a related title and in a certain order, the intent being to be read like a book.
+    However, the pacing shouldn't be too off if you decide to read out of order.
+</p>
+<p>
+    See the source code <a href="https://github.com/raggebatman/website/tree/main/library.ragge.xyz">here</a>.
+</p>
 
-<span>see</span> <a href="/books/test/sample_entry.html">the sample entry</a>
+<% shelf = Shelf.new(@items.find_all('/**/*.md')).books.each { |book| %>
+<details>
+    <summary><%= book.title %></summary>
+    <ol>
+        <% book.chapters.each { |chapter| %>
+            <li>
+                <a href="<%= chapter.hyperlink %>"><%= chapter.title %></a>
+            </li>
+        <% } %>
+    </ol>
+</details>
+<% } %>
+
+<hr>
+
+<p>
+    This website makes use of the following open source projects:
+</p>
+<ul>
+    <li>
+        <a href="https://github.com/Fonthausen/CrimsonPro">Crimson Pro</a>
+        <span>licensed under the SIL Open Font License 1.1</span>
+    </li>
+    <li>
+        <a href="https://github.com/googlefonts/inconsolata">Inconsolata</a>
+        <span>licensed under the SIL Open Font License 1.1</span>
+    </li>
+</ul>

@@ -1,7 +1,7 @@
 ---
 book: Test
-chapter: Sample Entry
-number: 0
+chapter: ndskandka
+number: 2
 ---
 
 Heading
@@ -22,12 +22,6 @@ Sub-heading
 
 ## Six
 
-### 3
-
-#### 4
-
-##### 5
-
 Paragraphs are separated 
 by a blank line.
 
@@ -35,13 +29,6 @@ Two spaces at the end of a line
 produce a line break.
 
 Text attributes _italic_, **bold**, `monospace`.
-
-~~~ js
-console.log("testing out a codeblock");
-const yes = `${1 + 1}`;
-
-// time to overflow!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-~~~
 
 Horizontal rule:
 

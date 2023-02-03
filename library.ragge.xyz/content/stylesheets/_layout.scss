@@ -9,7 +9,62 @@
         counter-increment: toc;
 
         &::marker {
-            content: counters(toc, '.', decimal) ' ';
+            content: counters(toc, '.', decimal) '. ';
         }
+    }
+}
+
+hr {
+    margin: 1em 0;
+}
+
+header {
+    grid-area: hd;
+    text-align: center;
+}
+
+aside {
+    grid-area: ad;
+    margin-left: 1em;
+}
+
+main {
+    grid-area: mn;
+}
+
+footer {
+    grid-area: ft;
+    margin-bottom: 1em;
+}
+
+body {
+    margin: 0;
+
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 800px) 1fr;
+    grid-auto-rows: auto;
+    grid-template-areas:
+        ".  hd . "
+        "ad mn . "
+        ".  ft . "
+}
+
+@media screen and (max-width: 1200px) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    body > * {
+        margin-left: 1em;
+        margin-right: 1em;
+        max-width: 800px;
+    }
+}
+
+@media screen and (max-width: 240px) {
+    body > * {
+        margin-left: 0;
+        margin-right: 0;
     }
 }

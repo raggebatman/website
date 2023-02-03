@@ -16,20 +16,17 @@
         <meta name="generator" content="Nanoc <%= Nanoc::VERSION %>" />
         <meta name="color-scheme" content="light dark" />
         <meta name="robots" content="index, follow" />
+        <!-- <%= @config.fetch(:site)[:source] %> -->
     </head>
     <body>
         <header>
             <h1><%= @config.fetch(:site)[:title] %></h1>
             <% if @item.key?(:title) %><h3><%= @item.fetch(:title) %></h3><% end %>
-            <nav></nav>
         </header>
         <main>
             <%= yield %>
         </main>
         <footer>
-            <div>
-                <span>View this on</span> <a id="repository" href="<%= @config.fetch(:site)[:source] %>">GitHub</a>
-            </div>
             <div>
                 <span>Last modified</span> <time id="timestamp"><%= File.stat(@item.raw_filename).mtime %></time>
             </div>
