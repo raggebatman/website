@@ -26,13 +26,22 @@ code {
     background-color: var(--background-secondary);
 }
 
-details[open] summary {
-    font-weight: bold;
-}
-
 summary:hover {
     color: var(--accent);
     cursor: pointer;
+}
+
+summary.large {
+    font-size: 1.25em;
+}
+
+summary.large::marker {
+    content: "";
+}
+
+details[open] > summary.large {
+    color: var(--accent);
+    font-weight: bold;
 }
 
 a, a:visited {

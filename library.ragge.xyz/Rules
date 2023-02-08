@@ -30,6 +30,15 @@ compile '/books/**/*.md' do
     write ext: '.html'
 end
 
+compile '/{articles,notes}/**/*.md' do
+    write item.identifier.to_s
+    filter :kramdown
+    layout '/singular.erb'
+    filter :add_toc
+    filter :pp_html
+    write ext: '.html'
+end
+
 layout '/*.erb', :erb
 
 passthrough '/**/*'

@@ -62,8 +62,8 @@ end
 # This class represents data of a chapter in a book.
 class Chapter
     def initialize(metadata)
-        # original: `content/.../file.md`
-        #  returns: `/.../file.html`
+        # original: `/content/.../file.md`
+        #  returns: `/content/.../file.html`
         @hyperlink = metadata[:filename][7..-3] + 'html'
         @title = metadata[:chapter]
         @number = metadata[:number]

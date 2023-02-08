@@ -1,27 +1,10 @@
-<% 
-book = Shelf.new(@items.find_all('/**/*.md')).books.find { |b| b.title == @item.fetch(:book) }
-chapter = book.chapters.find { |c| c.title == @item.fetch(:chapter) }
-
-index = book.chapters.index(chapter)
-previous_chapter = nil
-next_chapter = nil
-
-unless index <= 0
-    previous_chapter = book.chapters[index - 1]
-end
-
-unless index + 1 >= book.chapters.length()
-    next_chapter = book.chapters[index + 1]
-end
-%>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="/style.css" />
-        <title><%= @item.fetch(:book) %> - <%= @item.fetch(:chapter) %></title>
+        <title><%= @item.fetch(:title) %></title>
         <meta name="description" content="<%= @item.fetch(:description, @config.fetch(:site)[:description]) %>" />
         <meta name="author" content="<%= @item.fetch(:author, @config.fetch(:site)[:author]) %>" />
         <% if @item.key?(:keywords) %><meta name="keywords" content="<%= @item.fetch(:keywords) %>" /><% end %>
@@ -33,8 +16,7 @@ end
     </head>
     <body>
         <header>
-            <h1 style="margin-bottom: 0;"><%= chapter.title %></h1>
-            <h3 style="margin-top: 0;"><%= book.title %></h3>
+            <h1><%= @item.fetch(:title) %></h1>
         </header>
         <aside>
             <nav>
@@ -42,18 +24,6 @@ end
                     <span>Go to</span>
                     <a href="/">Index</a>
                 </div>
-                <% unless next_chapter.nil? then %>
-                <div>
-                    <span>Next:</span>
-                    <a href="<%= next_chapter.hyperlink %>"><%= next_chapter.title %></a>
-                </div>
-                <% end %>
-                <% unless previous_chapter.nil? then %>
-                <div>
-                    <span>Previous:</span>
-                    <a href="<%= previous_chapter.hyperlink %>"><%= previous_chapter.title %></a>
-                </div>
-                <% end %>
             </nav>
             {{TOC}}
             <a href="<%= "#{@item.path[0...-5]}.md" %>">View raw</a>

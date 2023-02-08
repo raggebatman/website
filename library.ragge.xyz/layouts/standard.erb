@@ -27,9 +27,9 @@
             <%= yield %>
         </main>
         <footer>
-            <div>
-                <span>Last modified</span> <time id="timestamp"><%= File.stat(@item.raw_filename).mtime %></time>
-            </div>
+            <p>
+                Last modified <time id="timestamp"><%= File.stat(@item.raw_filename).mtime %></time>
+            </p>
         </footer>
     </body>
 </html>
