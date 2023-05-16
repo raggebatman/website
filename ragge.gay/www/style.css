@@ -1,3 +1,86 @@
+:root {
+    --white-0:  hsl(0,      0%,     100%);
+    --white-1:  hsl(60,     28%,    95%);
+    --white-2:  hsl(64,     12%,    74%);
+
+    --black-2:  hsl(49,     13%,    34%);
+    --black-1:  hsl(0,      0%,     10%);
+    --black-0:  hsl(0,      0%,     0%);
+
+    
+    --purple:   hsl(262,    100%,   70%);
+    --cyan:     hsl(191,    79%,    63%);
+    --green:    hsl(83,     75%,    51%);
+    --yellow:   hsl(55,     67%,    63%);
+    --orange:   hsl(29,     96%,    54%);
+    --red:      hsl(337,    100%,   48%);
+}
+
+html {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: vga;
+    background: var(--black-0);
+    color: var(--white-0);
+}
+
+header, 
+main,
+footer
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1ch;
+    max-width: 80ch;
+}
+
+header > *, header,
+main > *, main,
+footer > *, footer
+{
+    margin: 0.5ch 0;
+}
+
+html,
+h1, h2, h3, h4
+{
+    font-size: 16px;
+    font-weight: normal;
+}
+
+a {
+    color: var(--cyan);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    text-align: justify;
+    text-indent: 2ch;
+}
+
+::selection {
+    background-color: var(--cyan);
+    color: var(--black-0);
+}
+
+@font-face {
+    font-family: vga;
+    src: url('./vga.woff');
+}
+
+@counter-style asterisks {
+    system: cyclic;
+    symbols: "*";
+    suffix: " ";
+}
+
+/*
 @media (prefers-color-scheme: dark) {
     :root {
         --bg: hsl(339, 0%, 5%);
@@ -82,3 +165,4 @@ a:hover {
 p {
     text-indent: 1em;
 }
+*/
