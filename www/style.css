@@ -1,0 +1,121 @@
+:root {
+    --doc-width: 60ch;
+    --margin: 1rem;
+    --line-width: 1px;
+}
+
+body {
+	margin: 0;
+	font-family: monospace;
+	image-rendering: pixelated;
+	font-size: 1.2em;
+}
+
+header, main, footer {
+	max-width: 60ch;
+	margin: var(--margin) auto;
+}
+
+main p {
+	text-indent: 2ch;
+}
+
+footer {
+	margin-bottom: 30vh;
+}
+
+ol, ul {
+	padding-left: 4ch;
+}
+
+ul li::marker {
+	content: '* ';
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+hr {
+	border-top: var(--line-width) solid;
+}
+
+fieldset {
+	margin: var(--margin) 0;
+	border: var(--line-width) solid;
+}
+
+fieldset legend {
+	padding: 0 1ch;
+}
+
+img {
+	max-height: 300px;
+	width: auto;
+}
+
+figcaption {
+	text-align: center;
+}
+
+table {
+	width: 100%;
+}
+
+.buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1ch;
+}
+
+.buttons a, a.button {
+	text-decoration: none;
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.buttons img, a.button img, img.button {
+	vertical-align: middle;
+}
+
+.center {
+	text-align: center;
+}
+
+legend.center {
+	text-align: initial;
+	margin: auto;
+}
+
+.roundel {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.roundel div {
+	text-align: center;
+}
+
+.roundel div:first-child {
+	flex: 1;
+	text-align: left;
+}
+
+.roundel div:last-child {
+	flex: 1;
+	text-align: right;
+}
+
+@media only screen and (max-width: 300px) {
+	fieldset {
+		border: none;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	main p {
+		text-indent: 0;
+	}
+}
