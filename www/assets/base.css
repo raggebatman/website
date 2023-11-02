@@ -1,0 +1,31 @@
+body {
+    font-family: "Crimson Pro", serif;
+    font-size: 1.2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, ol, ul, fieldset {
+    margin-top: 1ch;
+    margin-bottom: 1ch;
+}
+
+main p {
+	text-indent: 2ch;
+}
+
+fieldset > legend {
+	margin-left: 2ch;
+}
+
+ol, ul {
+	padding-left: 4ch;
+}
+
+ol > ol, ol > ul, ul > ol, ul > ul {
+	margin-top: 0;
+	padding-left: 2ch;
+}

@@ -1,0 +1,8 @@
+@import url("../assets/normalize.css");
+@import url("../assets/fonts/import.css");
+@import url("../assets/base.css");
+
+body {
+    max-width: 60ch;
+    margin: 0 auto;
+}
