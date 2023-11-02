@@ -10,8 +10,9 @@
 
     <entry>
         <title>Hello World</title>
+        <link href="https://ragge.gay/feed/hello-world" />
         <id>https://ragge.gay/feed/hello-world</id>
-        <updated>2023-11-02T00:00:00Z</updated>
+        <updated>2023-11-02T00:00:01Z</updated>
         <content>
             Hi all! This is the first entry of my feed.
             Not quite sure what will become of this...
