@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>raggebatman</title>
-    <subtitle>Ragge's personal website. Random stuff.</subtitle>
+    <subtitle>Hey, I'm Ragge. I tend to this feed sporadically and chaotically. Enter with caution (cue evil laughter)</subtitle>
     <link href="https://ragge.gay/atom.xml" rel="self" />
     <link href="https://ragge.gay/" />
     <id>https://ragge.gay/</id>
     <author><name>Ragge</name></author>
     <updated>2023-11-02T00:00:00Z</updated>
-
+    <entry>
+        <title>The journey of my website</title>
+        <link href="https://ragge.gay/feed/the-journey-of-my-website" />
+        <id>https://ragge.gay/feed/the-journey-of-my-website</id>
+        <updated>2023-11-06T00:00:00Z</updated>
+        <content>Thought I'd let you in on some trivia regarding this place.</content>
+    </entry>
     <entry>
         <title>Hello World</title>
         <link href="https://ragge.gay/feed/hello-world" />
         <id>https://ragge.gay/feed/hello-world</id>
         <updated>2023-11-02T00:00:01Z</updated>
-        <content>
-            Hi all! This is the first entry of my feed.
-            Not quite sure what will become of this...
-            only time will tell!
-        </content>
+        <content>Hi all! This is the first entry of my feed. Not quite sure what will become of this... only time will tell!</content>
     </entry>
 </feed>

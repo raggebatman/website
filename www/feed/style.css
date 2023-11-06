@@ -5,4 +5,14 @@
 body {
     max-width: 60ch;
     margin: 0 auto;
+    padding-bottom: 20%;
+}
+
+header {
+    text-align: center;
+}
+
+header::after {
+    display: block;
+    content: "· · ·";
 }

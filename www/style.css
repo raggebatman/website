@@ -33,6 +33,10 @@ aside {
 	image-rendering: pixelated;
 }
 
+#buttons a {
+	height: 31px;
+}
+
 #buttons > div {
 	display: flex;
 	flex-wrap: wrap;
