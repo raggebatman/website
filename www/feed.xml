@@ -5,20 +5,26 @@
     <link href="https://ragge.gay/atom.xml" rel="self" />
     <link href="https://ragge.gay/" />
     <id>https://ragge.gay/</id>
-    <author><name>Ragge</name></author>
-    <updated>2023-11-02T00:00:00Z</updated>
+    <author>
+        <name>Ragge</name>
+        <email>me@ragge.gay</email>
+    </author>
+    <updated>2023-11-07T00:00:00Z</updated>
     <entry>
         <title>The journey of my website</title>
-        <link href="https://ragge.gay/feed/the-journey-of-my-website" />
+        <link rel="alternate" href="https://ragge.gay/feed/the-journey-of-my-website" />
         <id>https://ragge.gay/feed/the-journey-of-my-website</id>
-        <updated>2023-11-06T00:00:00Z</updated>
-        <content>Thought I'd let you in on some trivia regarding this place.</content>
+        <updated>2023-11-07T00:00:01Z</updated>
+        <published>2023-11-06T00:00:00Z</published>
+        <summary>Thought I'd let you in on some trivia regarding this place.</summary>
+        <category term="meta" />
     </entry>
     <entry>
         <title>Hello World</title>
-        <link href="https://ragge.gay/feed/hello-world" />
         <id>https://ragge.gay/feed/hello-world</id>
-        <updated>2023-11-02T00:00:01Z</updated>
+        <updated>2023-11-07T00:00:00Z</updated>
+        <published>2023-11-02T00:00:00Z</published>
         <content>Hi all! This is the first entry of my feed. Not quite sure what will become of this... only time will tell!</content>
+        <category term="meta" />
     </entry>
 </feed>
