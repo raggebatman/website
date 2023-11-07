@@ -9,12 +9,17 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, h2, h3, h4, h5, h6,
 p, ol, ul, fieldset {
-    margin-top: 1ch;
-    margin-bottom: 1ch;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 main p {
 	text-indent: 2ch;
+}
+
+main > p {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 fieldset > legend {
