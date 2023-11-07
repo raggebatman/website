@@ -16,3 +16,7 @@ header::after {
     display: block;
     content: "· · ·";
 }
+
+header h1 {
+    margin-bottom: 0;
+}
