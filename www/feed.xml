@@ -11,6 +11,16 @@
     </author>
     <updated>2023-11-07T13:20:00+01:00</updated>
     <entry>
+        <title>What is AV programming?</title>
+        <link rel="alternate" href="/feed/what-is-av-programming" />
+        <id>tag:ragge.gay,2023-11-13:what-is-av-programming</id>
+        <updated>2023-11-13T00:00:00+01:00</updated>
+        <published>2023-11-13T00:00:00+01:00</published>
+        <summary>Short introduction to the coding world of the audiovisual.</summary>
+        <category term="programming" />
+        <category term="audiovisual" />
+    </entry>
+    <entry>
         <title>The journey of my website</title>
         <link rel="alternate" href="/feed/the-journey-of-my-website" />
         <id>tag:ragge.gay,2023-11-06:the-journey-of-my-website</id>
