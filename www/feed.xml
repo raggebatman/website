@@ -29,7 +29,7 @@
         disabled.
 
         So, if you're setting a static address, don't be like
-        me and isntead remember to bring the interface down before
+        me and instead remember to bring the interface down before
         configuring it :)
 
         Interestingly, the wiki page simply states to "disable
