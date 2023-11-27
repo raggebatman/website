@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Debian, static addressing, and you</title>
+        <meta name="color-scheme" content="light dark">
+		<meta name="robots" content="noindex, nofollow">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Debian, static addressing, and you</h1>
+            <i>Small note about static IP addressing on Debian.</i>
+        </header>
+        <main>
+            <p>
+                Something I found out recently is that the DHCP client
+                doesn't get configured correctly on Debian if you edit
+                the /etc/network/interfaces file to set a static address
+                before bringing the interface down.
+            </p>
+            <p>
+                What happens instead is that you set a static address...
+                and then the interface gets reconfigured with a dynamic
+                address after a while. You actually need to bring the
+                interface down (using ifdown) while the file is configured
+                for DHCP addressing in order for the DHCP client to be
+                disabled.
+            </p>
+            <p>
+                So, if you're setting a static address, don't be like
+                me and instead remember to bring the interface down before
+                configuring it :)
+            </p>
+            <p>
+                Interestingly, the wiki page simply states to "disable
+                all DHCP services" when you're setting a static address
+                which admittedly is all well and true which I forgot to
+                do- but never is there a mention that this is done for
+                you if you do it this way! As long as you're using the
+                DHCP client provided by the installer of course.
+            </p>
+        </main>
+        <footer>
+            <p>Authored by Ragge &mdash; See <a href="../LICENSE.txt">/LICENSE.txt</a></p>
+            <p>Revision 1; Published 2023-11-22; Updated 2023-11-27</p>
+        </footer>
+    </body>
+</html>

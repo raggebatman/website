@@ -40,3 +40,21 @@ footer p {
     margin-top: 0rem;
     margin-bottom: 0rem;
 }
+
+div.codeblock {
+    font-family: monospace;
+    border: 1px solid;
+    padding: 1em;
+    margin: 2ch 1em;
+    max-width: 70ch;
+    overflow-x: scroll;
+}
+
+div.codeblock span {
+    padding-bottom: 1ch;
+    display: block;
+}
+
+div.codeblock pre {
+    margin: 0;
+}

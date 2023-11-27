@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Minecraft as a systemd service</title>
+        <meta name="color-scheme" content="light dark">
+		<meta name="robots" content="noindex, nofollow">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Minecraft as a systemd service</h1>
+            <i>Documenting my recent venture with systemd.</i>
+        </header>
+        <main>
+            <p>
+                Yesterday on a Sunday, I had the bright idea of spending my
+                afternoon tinkering with setting up a Minecraft beta server
+                that I've today realised I won't ever play on. I did learn about
+                services and sockets a bit more though which is what I'll write
+                about hereafter. So far it's nothing more but a hacked together
+                set of files based on various Internet searches, but it's a
+                stepping stone towards sharpening my Linux skills (that's
+                what I like to think at least.)
+            </p>
+            <br>
+            <p>
+                Alright, firstly, when setting up the server I thought "hey,
+                I've seen Valheim done using systemd before so why not Minecraft?"
+                I got right to it, looked around here and there... Seemed like
+                a not-so-difficult thing to do. However, the guide that I was
+                following assumed that Minecraft came with RCON implemented which
+                is their remote control protocol thingamabob. As I was
+                setting up a beta server, that was not the case. Which led me into
+                systemd sockets. Why? Because it looked like you could send
+                stdin to the process of the systemd service, i.e. home-made RCON.
+            </p>
+            <p>
+                Unexplored territory! For me, at least. I had never touched a socket
+                file before aside from starting/enabling a few. I'll actually show
+                the file contents below for you to inspect.
+            </p>
+            <h2>Documentation</h2>
+            <p>
+                Might as well link this to you right?
+            </p>
+            <ul>
+                <li>
+                    <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html"
+                        target="_blank">systemd.unit</a>
+                </li>
+                <li>
+                    <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html"
+                        target="_blank">systemd.service</a>
+                </li>
+                <li>
+                    <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd.socket.html"
+                        target="_blank">systemd.socket</a>
+                </li>
+            </ul>
+            <h2>The service file</h2>
+            <div class="codeblock">
+                <span>/etc/systemd/system/minecraft.service</span>
+                <code>
+                    <pre>[Unit]
+Description=Minecraft Server
+After=network.target
+[Service]
+User=minecraft
+Group=minecraft
+Type=simple
+KillSignal=SIGCONT
+Sockets=minecraft.socket
+WorkingDirectory=/opt/minecraft/server
+ExecStart=/bin/sh -c "exec /opt/minecraft/server/run.sh < /run/minecraft.control"
+ExecStop=/bin/sh -c "echo stop > /run/minecraft.control"
+RestartSec=15
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target</pre>
+                </code>
+            </div>
+            <p>
+                Note the "exec" statement in ExecStart. I haven't actually looked
+                into why this works, but it does and that was enough for me
+                at the time. Notably in the service file is that the KillSignal
+                is SIGCONT instead of SIGKILL. This means that stopping the service
+                won't actually kill it initially, but it will kill it if it hasn't
+                stopped after some time (30 seconds if I'm not mistaken.)
+            </p>
+            <p>
+                The rest is fairly self-explanatory. Observe how "stop" is redirected
+                to a file in the ExecStop line. That's elaborated on in the socket file.
+                For context, minecraft is a user whose home directory is set to
+                /opt/minecraft. Also note the Sockets line specifying our socket
+                file, minecraft.socket. Specifying this will set up all the
+                dependencies for us.
+            </p>
+            <h2>The socket file</h2>
+            <div class="codeblock">
+                <span>/etc/systemd/system/minecraft.socket</span>
+                <code>
+                    <pre>[Unit]
+Description=Minecraft Socket
+AssertPathExists=/run
+BindsTo=minecraft.service
+[Socket]
+ListenFIFO=/run/minecraft.control
+FileDescriptorName=control
+RemoveOnStop=true
+SocketMode=0660
+SocketUser=minecraft
+SocketGroup=minecraft
+[Install]
+WantedBy=sockets.target</pre>
+                </code>
+            </div>
+            <p>
+                The important parts here are the ListenFIFO line, BindsTo,
+                and RemoveOnStop. FIFO was a new concept to me as of yesterday;
+                it's basically a pipe in the form of a file descriptor. You can
+                redirect stdout into this path and the systemd socket will receive it.
+                Pretty neat, and pretty simple. You also have the option to choose
+                ListenDatagram for UDP-like communication and you can even expose
+                this socket to IP making it networked if you want. There are
+                definitely some interesting opportunities regarding that.
+            </p>
+            <p>
+                See also here how the user and group belong to minecraft. This
+                account doesn't have a password on my system so the only way
+                to access it is to sudo su. I'm not really sure of the security
+                implications regarding this implementation, I'll have to look
+                at that more in-depth.
+            </p>
+            <h2>The startup script</h2>
+            <div class="codeblock">
+                <span>/opt/minecraft/server/run.sh</span>
+                <code>
+                    <pre>#!/bin/sh
+
+java -Xms512M -Xmx4G -jar server.jar nogui</pre>
+                </code>
+            </div>
+            <p>
+                This just invokes java, but, I thought I'd show it.
+            </p>
+            <h2>Usage</h2>
+            <p>
+                The nice part here is managing the Minecraft server like any other
+                systemd service. You can run <code>systemctl enable minecraft</code>,
+                disable it, start/stop it, and it works like a charm. All made
+                possible by the socket which makes us able to send commands to it
+                using scripts.
+            </p>
+            <p>
+                Moreover, as long as you're using the minecraft account, you can
+                send commands to the server wherever you are! I used this to
+                set up automatic backups of the server, forcing a save of all
+                chunks and packing it into a tar archive- accomplished with cron of course.
+            </p>
+            <p>
+                That's all for now, a simple demonstration of what I discovered.
+                I'll definitely have a closer look at sockets in systemd in the future,
+                they look really interesting! Notably, I want to see how to receive
+                feedback from the socket (stdout) and process it using a programming
+                language of some sort.
+            </p>
+        </main>
+        <footer>
+            <p>Authored by Ragge &mdash; See <a href="../LICENSE.txt">/LICENSE.txt</a></p>
+            <p>Revision 0; Published 2023-11-27</p>
+        </footer>
+    </body>
+</html>

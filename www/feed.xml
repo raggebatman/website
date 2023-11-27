@@ -11,34 +11,22 @@
     </author>
     <updated>2023-11-07T13:20:00+01:00</updated>
     <entry>
-        <title>Small note about static IP adressing on Debian</title>
+        <title>Minecraft as a systemd service</title>
+        <link rel="alternate" href="/feed/minecraft-as-a-systemd-service" />
+        <id>tag:ragge.gay,2023-11-27:minecraft-as-a-systemd-service</id>
+        <updated>2023-11-27T00:00:00+01:00</updated>
+        <published>2023-11-27T00:00:00+01:00</published>
+        <summary>Documenting my recent venture with systemd.</summary>
+        <category term="linux" />
+        <category term="sysadmin" />
+    </entry>
+    <entry>
+        <title>Debian, static addressing, and you</title>
+        <link rel="alternate" href="/feed/debian-static-addressing-and-you" />
         <id>tag:ragge.gay,2023-11-22:small-note-about-static-ip-adressing-on-debian</id>
-        <updated>2023-11-22T00:00:00+01:00</updated>
+        <updated>2023-11-27T00:00:00+01:00</updated>
         <published>2023-11-22T00:00:00+01:00</published>
-        <content>
-        Something I found out recently is that the DHCP client
-        doesn't get configured correctly on Debian if you edit
-        the /etc/network/interfaces file to set a static address
-        before bringing the interface down.
-
-        What happens instead is that you set a static address...
-        and then the interface gets reconfigured with a dynamic
-        address after a while. You actually need to bring the
-        interface down (using ifdown) while the file is configured
-        for DHCP addressing in order for the DHCP client to be
-        disabled.
-
-        So, if you're setting a static address, don't be like
-        me and instead remember to bring the interface down before
-        configuring it :)
-
-        Interestingly, the wiki page simply states to "disable
-        all DHCP services" when you're setting a static address
-        which admittedly is all well and true which I forgot to
-        do- but never is there a mention that this is done for
-        you if you do it this way! As long as you're using the
-        DHCP client provided by the installer of course.
-        </content>
+        <summary>Small note about static IP addressing on Debian.</summary>
         <category term="linux" />
         <category term="networking" />
     </entry>
