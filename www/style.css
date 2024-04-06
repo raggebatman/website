@@ -1,0 +1,74 @@
+body {
+    background: #b91d47;
+    font-family: "Playpen Sans", "Comic Sans MS", sans-serif;
+    font-size: 1.2em;
+    line-height: 1.3em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, ol, ul, fieldset {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+header,
+main,
+footer {
+    background-color: white;
+    max-width: 800px;
+    padding: 1rem;
+    margin: 1rem auto 0 auto;
+}
+
+main p {
+	text-indent: 0ch;
+}
+
+main > p {
+    margin-top: 1ch;
+    margin-bottom: 1ch;
+}
+
+fieldset > legend {
+	margin-left: 2ch;
+}
+
+ol, ul {
+	padding-left: 2ch;
+}
+
+ol > ol, ol > ul, ul > ol, ul > ul {
+	margin-top: 0;
+	padding-left: 2ch;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+div {
+    margin-bottom: 1rem;
+}
+
+img {
+    min-width: 24px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.center {
+    text-align: center;
+}
+
+@font-face {
+    font-family: "Playpen Sans";
+    src: url("PlaypenSans-VariableFont_wght.woff2") format("woff2");
+    font-weight: 125 950;
+    font-stretch: 75% 125%;
+    font-weight: normal;
+    font-style: normal;
+}
